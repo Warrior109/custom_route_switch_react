@@ -6,6 +6,7 @@
   "repository": "https://github.com/Warrior109/custom_route_switch_redux.git",
   "author": "Olexandr Hoshylyk <gashuk95@gmail.com>",
   "license": "MIT",
+  "keywords": ["custom", "route", "switch", "redux", "react", "router"],
   "babel": {
     "presets": [
       "es2015"
