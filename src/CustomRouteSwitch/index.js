@@ -7,3 +7,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {})(withRouter(CustomRouteSwitch));
+export { findValidChildren, validators, createValidator } from './validators';
