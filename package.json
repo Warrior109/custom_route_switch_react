@@ -27,7 +27,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha tests/",
     "watch": "./node_modules/.bin/mocha -w tests/",
-    "build": "./node_modules/babel-cli/bin/babel.js src --out-dir lib"
+    "build": "rm -rf lib && ./node_modules/babel-cli/bin/babel.js src --out-dir lib"
   },
   "dependencies": {
     "prop-types": "^15.6.2",
