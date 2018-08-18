@@ -7,6 +7,7 @@
   "author": "Olexandr Hoshylyk <gashuk95@gmail.com>",
   "license": "MIT",
   "keywords": ["custom", "route", "switch", "redux", "react", "router"],
+  "files": ["*.md", "lib", "src", "LICENSE"],
   "babel": {
     "presets": [
       "es2015"
