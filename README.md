@@ -14,7 +14,7 @@ Or [yarn](https://yarnpkg.com/):
 Usage
 -----
 import `CustomRouteSwitch` in some file and add validators to it like this:
-```
+```js
 import CustomRouteSwitch, { createValidator } from 'custom_route_switch_redux';
 
 const authenticationValidator = (child, props) => {
@@ -46,7 +46,7 @@ createValidator(authenticationValidator);
 export default CustomRouteSwitch;
 ```  
 If you need, you can throw props to validators throught connect:
-```
+```js
 import { connect } from 'react-redux';
 
 import CustomRouteSwitch from './customRouteSwitch';
@@ -63,4 +63,4 @@ This props will be available inside `props` atrribute in validators
 
 License
 -------
-[MIT License](https://github.com/Warrior109/custom_route_switch_redux/LICENSE.md)
+[MIT License](https://github.com/Warrior109/custom_route_switch_redux/blob/master/LICENSE)
