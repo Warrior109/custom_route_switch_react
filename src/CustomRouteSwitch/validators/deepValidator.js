@@ -1,4 +1,5 @@
 import findValidChildren from './findValidChildren';
+import CustomRouteSwitch from '../customRouteSwitch.js';
 
 const deepValidator = (child, props) => {
   const { children } = child.props;

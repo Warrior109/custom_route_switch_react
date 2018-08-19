@@ -1,16 +1,16 @@
 import { validators } from './index';
 
 const findValidChildren = (children, props) => {
-  return children.find ? children.find(ch => isValidChild(ch, props)) : children && isValidChild(children, props);
+  return children.find ? children.find(ch => isValidChild(ch, props)) : isValidChild(children, props) && children;
 };
 
 const isValidChild = (child, props) => {
   let isValid = true;
-  validators.forEach(validator => {
+  validators.some(validator => {
     isValid = validator(child, props);
-    if (!isValid) return false;
+    return !isValid;
   });
-  return true;
+  return isValid;
 };
 
 export default findValidChildren;

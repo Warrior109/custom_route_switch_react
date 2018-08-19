@@ -1,6 +1,5 @@
 import React, { Fragment, Component } from 'react';
 import { any, string, object, bool, oneOfType, func } from 'prop-types';
-import { Route, matchPath, Redirect } from 'react-router-dom';
 import { findValidChildren } from './validators';
 
 const propTypes = {
