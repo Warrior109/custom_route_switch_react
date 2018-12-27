@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { any, string, object, bool, oneOfType, func } from 'prop-types';
+import { Route } from 'react-router-dom';
 import { findValidChildren } from './validators';
 
 const propTypes = {
@@ -32,10 +33,10 @@ class CustomRouteSwitch extends Component {
     this.setState({ currentChild });
   };
 
-  render() {
+  getComponent = () => {
     const {
       state: { currentChild },
-      props: { path, component }
+      props: { component }
     } = this;
 
     const WrapperComponent = component || Fragment;
@@ -50,6 +51,17 @@ class CustomRouteSwitch extends Component {
             ''
         }
       </WrapperComponent>
+    );
+  };
+
+  render() {
+    const {
+      getComponent,
+      props: { path }
+    } = this;
+
+    return (
+      <Route path={ path } component={ getComponent } />
     );
   };
 };
