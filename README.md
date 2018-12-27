@@ -17,31 +17,24 @@ import `CustomRouteSwitch` in some file and add validators to it like this:
 ```js
 import CustomRouteSwitch, { createValidator } from 'custom_route_switch_redux';
 
-const authenticationValidator = (child, props) => {
-  const { isAuthenticated } = props;
-  if (child.props.auth) return isAuthenticated;
-  return true;
-};
-    
-const doctorValidator = (child, props) => {
+const batmanValidator = (child, props) => {
   const { currentUser } = props,
-    { doctor } = child.props;
+    { batman } = child.props;
    
-  if (doctor) return currentUser.type === 'Doctor';
+  if (batman) return currentUser.type === 'Batman';
   return true;
 };
    
-const patientValidator = (child, props) => {
+const supermanValidator = (child, props) => {
   const { currentUser } = props,
-    { patient } = child.props;
+    { superman } = child.props;
    
-  if (patient) return currentUser.type === 'Patient';
+  if (superman) return currentUser.type === 'Superman';
   return true;
 };
 
-createValidator(patientValidator);
-createValidator(doctorValidator);
-createValidator(authenticationValidator);
+createValidator(supermanValidator);
+createValidator(batmanValidator);
 
 export default CustomRouteSwitch;
 ```  
@@ -72,7 +65,7 @@ const Layouts = () => (
         <Route path='/test/path/1' component={ MyScreen1 } />
         <Route path='/test/path/2' component={ MyScreen2 } />
       </CustomRouteSwitch>
-      <CustomRouteSwitch path='/test/baman' component={ MyFourthLayout } batman >
+      <CustomRouteSwitch path='/test/batman' component={ MyFourthLayout } batman >
         <Route path='/test/batman/1' component={ MyScreen3 } />
         <Route path='/test/super/2' component={ MyScreen4 } />
       </CustomRouteSwitch>
