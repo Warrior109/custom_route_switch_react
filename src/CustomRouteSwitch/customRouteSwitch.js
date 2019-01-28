@@ -33,7 +33,7 @@ class CustomRouteSwitch extends Component {
     this.setState({ currentChild });
   };
 
-  getComponent = () => {
+  render() {
     const {
       state: { currentChild },
       props: { component }
@@ -51,17 +51,6 @@ class CustomRouteSwitch extends Component {
             ''
         }
       </WrapperComponent>
-    );
-  };
-
-  render() {
-    const {
-      getComponent,
-      props: { path }
-    } = this;
-
-    return (
-      <Route path={ path } component={ getComponent } />
     );
   };
 };

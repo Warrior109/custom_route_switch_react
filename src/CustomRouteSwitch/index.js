@@ -1,6 +1,4 @@
-import { withRouter } from 'react-router-dom';
-
 import CustomRouteSwitch from './customRouteSwitch';
 
-export default withRouter(CustomRouteSwitch);
+export default CustomRouteSwitch;
 export { findValidChildren, validators, createValidator } from './validators';

@@ -5,12 +5,9 @@ const findValidChildren = (children, props) => {
 };
 
 const isValidChild = (child, props) => {
-  let isValid = true;
-  validators.some(validator => {
-    isValid = validator(child, props);
-    return !isValid;
+  return validators.every(validator => {
+    return validator(child, props);
   });
-  return isValid;
 };
 
 export default findValidChildren;
