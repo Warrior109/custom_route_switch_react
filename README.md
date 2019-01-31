@@ -1,21 +1,21 @@
-# custom_route_switch_redux
-Routing layouts and custom validators systems for react and redux.
+# custom_route_switch_react
+Routing layouts and custom validators systems for react.
 
 Installation
 -----------
 Using [npm](https://www.npmjs.com/):
 
-    $ npm install --save custom_route_switch_redux
+    $ npm install --save custom_route_switch_react
 
 Or [yarn](https://yarnpkg.com/):
 
-    $ yarn add custom_route_switch_redux
+    $ yarn add custom_route_switch_react
 
 Usage
 -----
 import `CustomRouteSwitch` in some file and add validators to it like this:
 ```js
-import CustomRouteSwitch, { createValidator } from 'custom_route_switch_redux';
+import CustomRouteSwitch, { createValidator } from 'custom_route_switch_react';
 
 const batmanValidator = (child, props) => {
   const { currentUser } = props,
@@ -86,4 +86,4 @@ Props, which you throw in CustomRouteSwitch component you can retrieve from `chi
 
 License
 -------
-[MIT License](https://github.com/Warrior109/custom_route_switch_redux/blob/master/LICENSE)
+[MIT License](https://github.com/Warrior109/custom_route_switch_react/blob/master/LICENSE)

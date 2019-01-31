@@ -1,9 +1,9 @@
 {
-  "name": "custom_route_switch_redux",
+  "name": "custom_route_switch_react",
   "version": "0.2.0",
   "description": "Component, for creating layouts system and custom validations to react router switch",
   "main": "lib/index",
-  "repository": "https://github.com/Warrior109/custom_route_switch_redux.git",
+  "repository": "https://github.com/Warrior109/custom_route_switch_react.git",
   "author": "Olexandr Hoshylyk <gashuk95@gmail.com>",
   "license": "MIT",
   "keywords": [
@@ -46,7 +46,6 @@
   "dependencies": {
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
-    "react-redux": "^5.0.7",
     "react-router-dom": "^4.4.0-beta.6"
   }
 }
