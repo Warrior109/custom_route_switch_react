@@ -42,17 +42,19 @@ If you need, you can throw props to validators throught connect:
 ```js
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 
 import CustomRouteSwitch from './customRouteSwitch';
     
 const mapStateToProps = (state) => ({
   currentUser: state.currentUser.user,
-  isAuthenticated: state.currentUser.authenticationStatus
+  isAuthenticated: state.currentUser.authenticationStatus,
+  Route
 });
 
 export default connect(mapStateToProps, {})(withRouter(CustomRouteSwitch));
 ```
-Make sure that you wrap `CustomRouteSwitch` with `withRouter` method.
+Make sure that you wrap `CustomRouteSwitch` with `withRouter` method and add Route component to the props;
 This props will be available inside `props` atrribute in validators.
 
 After this customization you can start to use it:
