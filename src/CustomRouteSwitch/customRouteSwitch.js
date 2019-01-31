@@ -1,12 +1,12 @@
 import React, { Fragment, Component } from 'react';
 import { any, string, object, bool, oneOfType, func } from 'prop-types';
-import { Route } from 'react-router-dom';
 import { findValidChildren } from './validators';
 
 const propTypes = {
   children: any,
   path: string,
   match: object.isRequired,
+  Route: oneOfType([ object, func ]).isRequired,
   component: oneOfType([ object, func ])
 };
 
@@ -33,7 +33,7 @@ class CustomRouteSwitch extends Component {
     this.setState({ currentChild });
   };
 
-  render() {
+  getComponent = () => {
     const {
       state: { currentChild },
       props: { component }
@@ -51,6 +51,17 @@ class CustomRouteSwitch extends Component {
             ''
         }
       </WrapperComponent>
+    );
+  }
+
+  render() {
+    const {
+      getComponent,
+      props: { path, Route }
+    } = this;
+
+    return (
+      <Route { ...{ path } } component={ getComponent } />
     );
   };
 };
