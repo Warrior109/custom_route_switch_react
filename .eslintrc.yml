@@ -1,0 +1,28 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  - 'plugin:react/recommended'
+  - airbnb
+parser: 'babel-eslint'
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 12
+  sourceType: module
+plugins:
+  - react
+  - jsx-a11y
+rules:
+  react/jsx-filename-extension: off
+  react/jsx-fragments: off # Just a problem with highlighting injections
+  react/forbid-prop-types: off
+  import/no-unresolved: off # some bug with this plugin
+  import/prefer-default-export: off
+  react/jsx-props-no-spreading: off
+  no-control-regex: off
+  no-underscore-dangle: off
+  no-extend-native: off
+  react/jsx-one-expression-per-line: off
+ignorePatterns:
+  - app/javascript/locales/*.js

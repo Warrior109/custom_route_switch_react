@@ -1,11 +1,9 @@
 import pathValidator from './pathValidator';
-import deepValidator from './deepValidator';
-import findValidChildren from './findValidChildren';
 
-let validators = [pathValidator, deepValidator];
+const validators = [pathValidator];
 
-const createValidator = validator => {
+const createValidator = (validator) => {
   validators.unshift(validator);
 };
 
-export { findValidChildren, validators, createValidator };
+export { validators, createValidator };

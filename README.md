@@ -60,27 +60,30 @@ This props will be available inside `props` atrribute in validators.
 After this customization you can start to use it:
 ```js
 import CustomRouteSwitch from 'src/myEditedCustomRouteSwitch';
+import CustomRouteCase from 'custom_route_switch_react';
 
 const Layouts = () => (
-  <CustomRouteSwitch component={ App } >
-    <CustomRouteSwitch path='/test' component={ MySuperSecondLayout } >
-      <CustomRouteSwitch component={ MyThirdLayout } superman >
-        <Route path='/test/path/1' component={ MyScreen1 } />
-        <Route path='/test/path/2' component={ MyScreen2 } />
-      </CustomRouteSwitch>
-      <CustomRouteSwitch path='/test/batman' component={ MyFourthLayout } batman >
-        <Route path='/test/batman/1' component={ MyScreen3 } />
-        <Route path='/test/super/2' component={ MyScreen4 } />
-      </CustomRouteSwitch>
-      <Route component={ NotFound } />
-    </CustomRouteSwitch>
+  <CustomRouteSwitch>
+    <CustomRouteCase component={ App } >
+      <CustomRouteCase path='/test' component={ MySuperSecondLayout } >
+        <CustomRouteCase component={ MyThirdLayout } superman >
+          <Route path='/test/path/1' component={ MyScreen1 } />
+          <Route path='/test/path/2' component={ MyScreen2 } />
+        </CustomRouteCase>
+        <CustomRouteCase path='/test/batman' component={ MyFourthLayout } batman >
+          <Route path='/test/batman/1' component={ MyScreen3 } />
+          <Route path='/test/super/2' component={ MyScreen4 } />
+        </CustomRouteCase>
+        <Route component={ NotFound } />
+      </CustomRouteCase>
+    </CustomRouteCase>
   </CustomRouteSwitch>
 )
 
 export default Layouts;
 ```
 
-Props, which you throw in CustomRouteSwitch component you can retrieve from `child.props` inside validators. But take a look, that not every child will have this props. Thats why in validators you should check if this props present.
+Props, which you throw in CustomRouteCase component you can retrieve from `child.props` inside validators. But take a look, that not every child will have this props. Thats why in validators you should check if this props present.
 
 `CustomRouteSwitch` already have two basics validators: path and deep. Thats why you can write path props. In case above, if your path will be `/test/path/1` you will render `MyScreen1`. In case, if you path will be `/test/batman/1` you will render `MyScreen3`. If your path will be `/test/super/2` you will render `NotFound` component inside `MySuperSecondLayout`, because pathValidations in `CustomRouteSwitch` with batman validation will fail.  
 

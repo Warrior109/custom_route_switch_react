@@ -1,74 +1,49 @@
-import React, { Fragment, Component } from 'react';
-import { any, string, object, bool, oneOfType, func } from 'prop-types';
-import { findValidChildren } from './validators';
+import React, {
+  Fragment, useState, useEffect, useCallback,
+} from 'react';
+import { node, func } from 'prop-types';
+
+import findValidChildrenChain from './findValidChildrenChain';
+import CustomRouteSwitchContext from './context';
 
 const propTypes = {
-  children: any,
-  path: string,
-  match: object.isRequired,
-  Route: oneOfType([ object, func ]).isRequired,
-  component: oneOfType([ object, func ])
+  children: node.isRequired,
+  Route: func.isRequired,
+  component: node,
+};
+const defaultProps = {
+  component: null,
 };
 
-class CustomRouteSwitch extends Component {
-  constructor(props) {
-    super(props);
+const CustomRouteSwitch = (props) => {
+  const [validChildrenChain, setValidChildrenChain] = useState([]);
+  const { Route } = props;
+  const [currentChild, ...validChildren] = validChildrenChain;
 
-    this.state = {
-      currentChild: {}
-    };
-  };
+  useEffect(() => {
+    const newValidChildrenChain = findValidChildrenChain(props.children, props);
+    if (newValidChildrenChain !== validChildrenChain) setValidChildrenChain(newValidChildrenChain);
+  }, [props]);
 
-  UNSAFE_componentWillMount() {
-    const { children } = this.props;
-
-    const currentChild = findValidChildren(children, this.props);
-    this.setState({ currentChild });
-  };
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const { children } = nextProps;
-
-    const currentChild = findValidChildren(children, nextProps);
-    this.setState({ currentChild });
-  };
-
-  getComponent = () => {
-    const {
-      state: { currentChild },
-      props: { component }
-    } = this;
-
+  // eslint-disable-next-line react/no-multi-comp
+  const getComponent = useCallback(() => {
+    const { component } = props;
     const WrapperComponent = component || Fragment;
-    const ChildComponent = currentChild && currentChild.type;
 
     return (
       <WrapperComponent>
-        {
-          currentChild && currentChild.props ?
-            <ChildComponent { ...currentChild.props } />
-            :
-            ''
-        }
+        { currentChild }
       </WrapperComponent>
     );
-  }
+  }, [currentChild]);
 
-  render() {
-    const {
-      getComponent,
-      props: { path, Route }
-    } = this;
-
-    return (
-      <Route { ...{ path } } component={ getComponent } />
-    );
-  };
-};
-
-CustomRouteSwitch.defaultProps = {
-  path: ''
+  return (
+    <CustomRouteSwitchContext.Provider value={validChildren}>
+      <Route component={getComponent} />
+    </CustomRouteSwitchContext.Provider>
+  );
 };
 CustomRouteSwitch.propTypes = propTypes;
+CustomRouteSwitch.defaultProps = defaultProps;
 
 export default CustomRouteSwitch;

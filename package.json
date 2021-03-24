@@ -1,6 +1,6 @@
 {
   "name": "custom_route_switch_react",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Component, for creating layouts system and custom validations to react router switch",
   "main": "lib/index",
   "repository": "https://github.com/Warrior109/custom_route_switch_react.git",
@@ -44,8 +44,8 @@
     "build": "rm -rf lib && ./node_modules/babel-cli/bin/babel.js src --out-dir lib"
   },
   "dependencies": {
-    "prop-types": "^15.6.2",
-    "react": "^16.4.2",
-    "react-router-dom": "^4.4.0-beta.6"
+    "prop-types": "15.7.2",
+    "react": "17.0.1",
+    "react-router-dom": "5.2.0"
   }
 }
