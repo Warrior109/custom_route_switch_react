@@ -1,14 +1,13 @@
 import React, {
-  Fragment, useState, useEffect, useCallback,
+  Fragment, useState, useEffect,
 } from 'react';
-import { node, func } from 'prop-types';
+import { node } from 'prop-types';
 
 import findValidChildrenChain from './findValidChildrenChain';
 import CustomRouteSwitchContext from './context';
 
 const propTypes = {
   children: node.isRequired,
-  Route: func.isRequired,
   component: node,
 };
 const defaultProps = {
@@ -17,7 +16,8 @@ const defaultProps = {
 
 const CustomRouteSwitch = (props) => {
   const [validChildrenChain, setValidChildrenChain] = useState([]);
-  const { Route } = props;
+  const { component } = props;
+  const Wrapper = component || Fragment;
   const [currentChild, ...validChildren] = validChildrenChain;
 
   useEffect(() => {
@@ -25,22 +25,12 @@ const CustomRouteSwitch = (props) => {
     if (newValidChildrenChain !== validChildrenChain) setValidChildrenChain(newValidChildrenChain);
   }, [props]);
 
-  // eslint-disable-next-line react/no-multi-comp
-  const getComponent = useCallback(() => {
-    const { component } = props;
-    const WrapperComponent = component || Fragment;
-
-    return (
-      <WrapperComponent>
-        { currentChild }
-      </WrapperComponent>
-    );
-  }, [currentChild]);
-
   return (
-    <CustomRouteSwitchContext.Provider value={validChildren}>
-      <Route component={getComponent} />
-    </CustomRouteSwitchContext.Provider>
+    <Wrapper>
+      <CustomRouteSwitchContext.Provider value={validChildren}>
+        { currentChild }
+      </CustomRouteSwitchContext.Provider>
+    </Wrapper>
   );
 };
 CustomRouteSwitch.propTypes = propTypes;

@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { any } from 'prop-types';
 
 import CustomRouteSwitchContext from '../CustomRouteSwitch/context';
@@ -13,14 +13,16 @@ const defaultProps = {
 };
 
 const CustomRouteCase = ({ component, children }) => {
-  const wrapperRef = useRef(component || Fragment);
   const validChildren = useContext(CustomRouteSwitchContext);
-  const currentChild = children.find((child) => validChildren.includes(child));
+  const currentChild = children.find
+    ? children.find((child) => validChildren.includes(child))
+    : children;
+  const Wrapper = component || Fragment;
 
   return (
-    <wrapperRef.current>
-      { currentChild || children }
-    </wrapperRef.current>
+    <Wrapper>
+      { currentChild }
+    </Wrapper>
   );
 };
 CustomRouteCase.propTypes = propTypes;
