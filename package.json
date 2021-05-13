@@ -1,6 +1,6 @@
 {
   "name": "custom_route_switch_react",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Component, for creating layouts system and custom validations to react router switch",
   "main": "lib/index",
   "repository": "https://github.com/Warrior109/custom_route_switch_react.git",
